@@ -3,6 +3,7 @@ const API_URL = "https://api.github.com/users/";
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const input = document.getElementById("input");
+const toggle = document.getElementById("toggle");
 
 const createUserCard = (user) => {
   console.log(user);
@@ -11,7 +12,7 @@ const createUserCard = (user) => {
       <div>
         <img class="avatar" src="${user.avatar_url}" alt="${user.name}" />
       </div>
-      <div class="user-info">
+      <div class="user-info changable" >
         <h2>${user.name}</h2>
         <p>${user.bio}</p>
         <ul class="info">
@@ -36,6 +37,8 @@ const addReposToCard = (repos) => {
      */
     const repoEl = document.createElement("a"); // <a></a>
     repoEl.classList.add("repo"); // class="repo"
+    repoEl.classList.add("changable");
+    repoEl.style.transition = "0.4s";
     repoEl.href = repo.html_url; // href={repo.html_url}
     repoEl.target = "_blank"; // target="_black"
     repoEl.innerText = repo.name;
@@ -68,3 +71,19 @@ form.addEventListener("submit", (event) => {
     input.value = "";
   }
 });
+
+const onToggle = () => {
+  const body = document.getElementById("root");
+  const nodes = document.getElementsByClassName("changable");
+  console.log(nodes);
+
+  for (let i = 0; i < nodes.length; i++) {
+    if (toggle.checked) {
+      nodes[i].classList.add("white");
+    } else {
+      nodes[i].classList.remove("white");
+    }
+  }
+};
+
+toggle.addEventListener("click", (event) => setTimeout(onToggle(), 0));

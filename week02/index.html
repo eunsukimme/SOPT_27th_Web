@@ -4,16 +4,23 @@
     <meta charset="utf-8" />
     <title>Github Profile Finder</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="switch.css" />
   </head>
-  <body>
+  <body id="root" class="changable">
+    <label class="switch">
+      <input type="checkbox" id="toggle">
+      <span class="slider round"></span>
+    </label>
+    </label>
     <form id="form">
       <input
         type="text"
         id="input"
+        class="changable"
         placeholder="Github 프로필을 검색해보세요"
       />
     </form>
-    <main id="main"></main>
+    <main id="main" class="changable"></main>
     <script async src="script.js"></script>
   </body>
 </html>
